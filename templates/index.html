@@ -8,8 +8,12 @@
 </head>
 <body>
     <form action="">
+        {{ form }}
         {% for todo in todos %}
-            {todo.creator}
+            <h1>{{ todo.creator }}</h1>
+            <h2>{{ todo.status }}</h2>
+            <h2>{{ todo.description }}</h2>
+            <h2>{{ todo.date }}</h2>
         {% endfor %}
     </form>
 </body>
