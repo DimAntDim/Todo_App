@@ -69,8 +69,12 @@
     <div class="todo">
             <form method="POST" action="/create">
                 {% csrf_token %}
-                <p>Owner name<input type="text" name='creator'/></p>
-                <p>Description<textarea name="description"></textarea></p>
+                <p>Task name</p>
+                <p><input type="text" name='task-name'/></p>
+                <p>Owner name</p>
+                <p><input type="text" name='owner'/></p>
+                <p>Description</p>
+                <p><textarea name="description"></textarea></p>
                 <div class="create">
                     <button>Create</button>
                 </div>
@@ -83,7 +87,8 @@
                 {% if todo.status %}
                     <div class="done">
                         <div class="container-done">
-                            <h1>{{ todo.creator }}</h1>
+                            <h1>{{ todo.owner }}</h1>
+                            <h2>{{ todo.task_name }}</h2>
                             <div class="description">
                                 <p>{{ todo.description }}</p>
                             </div>
@@ -92,11 +97,11 @@
                 {% else %}
                     <div class="open">
                         <div class="container-open">
-                            <h1>{{ todo.creator }}</h1>
+                            <h1>{{ todo.owner }}</h1>
                             <div class="desctiption">
                                 <p>{{ todo.description }}</p>
                             </div>
-                        </div>
+                        </div>  
                     </div>
                 {% endif %}
             {% endfor %}

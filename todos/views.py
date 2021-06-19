@@ -1,6 +1,6 @@
 from todos.forms import CreateTodo
 from django.shortcuts import redirect, render
-from .models import Todo
+from .models import Person, Todo
 
 def all_todos(request):
     if request == "Post":
@@ -16,11 +16,22 @@ def all_todos(request):
         return render(request, 'index.html', context)
 
 def create_todo(request):
-    creator = request.POST['creator']
+    task_name = request.POST['task-name']
+    owner_name = request.POST['owner']
     description = request.POST['description']
+    owner = Person.objects.filter(name=owner_name).first()
+
+    if not owner:
+        owner = Person(
+            name=owner_name,
+        )
+        owner.save()
+
     todo = Todo(
-        creator=creator,
-        description=description,
+        task_name= task_name,
+        owner=owner,
+        description= description,
         )
     todo.save()
     return redirect('/') 
+

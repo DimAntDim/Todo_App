@@ -1,8 +1,12 @@
-from todos.models import Todo
+from todos.models import Person, Todo
 from django.contrib import admin
 
 
 @admin.register(Todo)
 class TodoAdmin(admin.ModelAdmin):
-    display = ['creator', 'date', 'descriptopn']
+    display = ['owner', 'date', 'descriptopn']
 
+
+@admin.register(Person)
+class PersonAdmin(admin.ModelAdmin):
+    display = ['name']
