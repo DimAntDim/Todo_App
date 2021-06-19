@@ -4,7 +4,7 @@ from django.forms.widgets import Textarea
 
 class CreateTodo(forms.Form):
     creator = forms.CharField(max_length=20)
-    status = forms.BooleanField
+    status = forms.BooleanField()
     description = forms.CharField(
         widget=Textarea,
     )

@@ -1,7 +1,8 @@
-from todos.views import todos
+from todos.views import all_todos, create_todo
 from django.urls import path
 
 
 urlpatterns = [
-    path('', todos, name='index')
+    path('', all_todos, name='index'),
+    path('create', create_todo, name='create'),
 ]
