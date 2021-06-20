@@ -7,7 +7,7 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 class Todo(models.Model):
-    task_name = models.CharField(max_length=20, blank=True)
+    text = models.CharField(max_length=20, blank=True)
     owner = models.ForeignKey(Person, on_delete=CASCADE)
     description = models.TextField(blank=False)
 
